@@ -1,5 +1,5 @@
 import { Router} from 'https://deno.land/x/oak/mod.ts';
-import {getActivities, getActivity, addActivity, updateActivity, deleteActivity, testCode, addUser, getUsers, getUser, updateUser} from './controllers/activity-contoller.ts';
+import {getActivities, getActivity, addActivity, updateActivity, deleteActivity, testCode, addUser, getUsers, getUser, updateUser, deleteUser} from './controllers/activity-contoller.ts';
 
 const router = new Router();
 
@@ -13,6 +13,7 @@ router.get('/test', testCode);
 router.post('/adduser', addUser);
 router.get('/getusers', getUsers);
 router.get('/getuser/:id', getUser);
-router.put('/updateuser/:id', updateUser)
+router.put('/updateuser/:id', updateUser);
+router.delete('/deleteuser/:id', deleteUser);
 
 export default router;

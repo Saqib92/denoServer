@@ -224,9 +224,9 @@ const updateUser = async ({
 }) => {
   if (request.body()) {
     const body = await request.body();
-    console.log('Body', body);
+    console.log("Body", body);
     const updateData = await body.value;
-    console.log('Update Data', updateData);
+    console.log("Update Data", updateData);
     const modifiedCount = await userCollection.updateOne(
       { _id: { $oid: params.id } },
       {
@@ -259,6 +259,29 @@ const updateUser = async ({
   }
 };
 
+const deleteUser = async ({ params, response }: {
+  params: { id: string };
+  response: any;
+}) => {
+  const count = await userCollection.deleteOne({
+    _id: { $oid: params.id },
+  });
+
+  if (!count) {
+    response.status = 404;
+    response.body = {
+      sucess: false,
+      message: "No Data Found",
+    };
+  } else {
+    response.status = 200;
+    response.body = {
+      sucess: true,
+      message: "User Deleted Sucessfully!",
+    };
+  }
+};
+
 export {
   getActivities,
   getActivity,
@@ -269,5 +292,6 @@ export {
   addUser,
   getUsers,
   getUser,
-  updateUser
+  updateUser,
+  deleteUser,
 };
