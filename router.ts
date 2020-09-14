@@ -1,5 +1,5 @@
 import { Router} from 'https://deno.land/x/oak/mod.ts';
-import {addUser, getUsers, getUser, updateUser, deleteUser} from './controllers/activity-contoller.ts';
+import {addUser, getUsers, getUser, updateUser, deleteUser} from './controllers/user-contoller.ts';
 
 const router = new Router();
 
